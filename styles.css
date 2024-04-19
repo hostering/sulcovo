@@ -1,0 +1,232 @@
+@property --angle {
+    syntax: '<angle>';
+    initial-value: 0deg;
+    inherits: false;
+}
+
+
+.spiral {
+  display: flex;
+  justify-content: center; /* Zarovná děti na střed vodorovně */
+  align-items: flex-start; /* Zarovná děti na začátek svisle */
+  gap: 5px;
+  position: absolute;
+  top: 20px; /* Umístí kontejner 20 pixelů od horní hranice */
+  left: 50%; /* Umístí levý okraj kontejneru na střed obrazovky */
+  transform: translateX(-50%); /* Posune kontejner zpět o polovinu jeho šířky, aby byl centrován */
+  color: #e0ecef;
+  font-family: "sans-serif";
+}
+
+@keyframes spiral{
+  0%{
+    --angle: 0deg;
+  }
+  100%{
+    --angle: 360deg;
+  }
+}
+
+.character{
+  font-size: 2.8rem;
+  color: white;
+  text-transform: uppercase;
+  transform: translateY(calc(sin(var(--angle)) * 10px)) scale(calc(cos(var(--angle)) * 0.5 + 0.5));
+  animation: spiral 4s linear infinite;
+}
+
+@media (max-width: 600px) { /* Pokryje většinu malých až středně velkých zařízení */
+  .spiral {
+    font-size: 2rem; /* Menší velikost písma pro lepší čitelnost */
+  }
+
+  .character {
+    font-size: 1.6rem; /* Menší velikost písma pro jednotlivé znaky */
+    transform: translateY(calc(sin(var(--angle)) * 5px)) scale(calc(cos(var(--angle)) * 0.5 + 0.7));
+  }
+}
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    line-height: 1.6;
+    color: #ffffff;
+    background-color: #000000;
+}
+
+header {
+    background: #000000;
+    color: #fff;
+    padding: 10px 0;
+    text-align: center;
+}
+
+body,html {
+  margin: 0;
+  font: bold 14px/1.4 'Open Sans', arial, sans-serif;
+  background: #000;
+}
+ul { 
+  margin: 0px auto 0; 
+  padding: 0; 
+  list-style: none; 
+  display: table;
+  width: 600px;
+  text-align: center;
+}
+li { 
+  display: table-cell; 
+  position: relative; 
+  padding: 15px 0;
+}
+a {
+  color: #fff;
+  text-transform: uppercase;
+  text-decoration: none;
+  letter-spacing: 0.15em;
+  
+  display: inline-block;
+  padding: 15px 20px;
+  position: relative;
+}
+a:after {    
+  background: none repeat scroll 0 0 transparent;
+  bottom: 0;
+  content: "";
+  display: block;
+  height: 2px;
+  left: 50%;
+  position: absolute;
+  background: #fff;
+  transition: width 0.3s ease 0s, left 0.3s ease 0s;
+  width: 0;
+}
+a:hover:after { 
+  width: 100%; 
+  left: 0; 
+}
+@media screen and (max-height: 300px) {
+	ul {
+		margin-top: 40px;
+	}
+}
+
+
+/* Zajistí, že nadřazený element neumožňuje horizontální scrollování */
+body, html {
+    width: 100%;
+    overflow-x: hidden; /* Zabrání horizontálnímu scrollování */
+    max-width: 100%; /* Zamezí přetečení obsahu */
+}
+
+header nav {
+    width: 100%; /* Nastavení šířky navigace na 100% */
+    box-sizing: border-box; /* Započítávání paddingu a borderu do šířky */
+}
+
+header nav ul {
+    width: 100%; /* Nastavení šířky seznamu na 100% */
+    display: flex; /* Flexbox pro lepší uspořádání položek */
+    justify-content: center; /* Centrování položek */
+    padding: 0; /* Odstranění paddingu */
+    margin: 0 auto; /* Centrování seznamu a odstranění marginu */
+    list-style: none; /* Odstranění odrážek */
+    flex-wrap: wrap; /* Položky půjdou na nový řádek, pokud není dost místa */
+}
+
+header nav ul li a, .button {
+    color: #fff;
+    text-decoration: none;
+    background: #0f0f0f;
+    border-radius: 5px;
+    transition: background-color 0.3s, color 0.3s;
+    padding: 15px 20px; /* Větší padding pro lepší klikatelnost */
+    box-sizing: border-box; /* Započítávání paddingu a borderu do šířky */
+
+    display: block;  /* Zajistí, že odkaz zabere celou plochu tlačítka */
+}
+
+/* Responzivní nastavení pro malá zařízení */
+@media (max-width: 768px) {
+    header nav ul li {
+        width: 100%; /* Každá položka zabere celou šířku */
+    }
+
+    header nav ul li a, .button {
+        width: 100%; /* Nastavení šířky tlačítka na 100% */
+        text-align: center; /* Centrování textu */
+    }
+}
+
+
+
+
+
+
+
+
+
+section {
+    padding: 20px;
+    margin: 0 10px;
+    background: #0f0f0f;
+    border: 1px solid #ddd;
+}
+
+.project {
+    margin-bottom: 20px;
+}
+
+footer {
+    text-align: center;
+    padding: 10px 0;
+    background: #0f0f0f;
+    color: #fff;
+}
+
+/* Responsive design can be added here */
+
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+th, td {
+    padding: 10px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+}
+
+thead {
+    background-color: gray;
+}
+
+tbody tr:nth-child(even) {
+    background-color: #4d91ff;
+}
+
+tbody tr:nth-child(odd) {
+    background-color: #0062ff;
+    color: white;
+}
+
+tbody tr:hover {
+    background-color: #FFA07A;
+}
+
+.groove {
+    border-style: groove;
+    border-width: 8px;
+    border-color: #8B4513;
+}
+.ridge {
+    border-style: ridge;
+    border-width: 8px;
+    border-color: #BDB76B;
+}
+.outset {
+    border-style: outset;
+    border-width: 8px;
+    border-color: #A52A2A;
+}
